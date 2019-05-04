@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <script>
+        function getWeather() {
+          var request = new XMLHttpRequest()
+
+          // Open a new connection, using the GET request on the URL endpoint
+          let city = document.getElementById('city').value;
+          request.open('GET', `/w/${city}`, true)
+          if (request.status >= 200 && request.status < 400) {
+            console.log(request.statusText);
+          }
+          request.onload = function () {
+            var weather = JSON.parse(this.response)
+            document.getElementById('message').textContent = `It's ${weather.main.temp} degrees F in ${weather.name}!`;
+          }
+        request.send();
+        return false;
+        }
+      </script>
+  <div class="container">
+    <fieldset>
+      <form onsubmit="return getWeather()" >
+        <input id="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+        <input type="submit" class="ghost-button" value="Get Weather" ">
+      </form>
+      <div id="message"></div>
+
+    </fieldset>
+  </div>
+</body>
+
+</html>
