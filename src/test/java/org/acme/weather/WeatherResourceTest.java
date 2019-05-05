@@ -1,21 +1,20 @@
 package org.acme.weather;
 
-import io.quarkus.test.junit.QuarkusTest;
+import static io.restassured.RestAssured.given;
+
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
+import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 public class WeatherResourceTest {
 
     @Test
     public void testHelloEndpoint() {
-//        given()
-//          .when().get("/w")
-//          .then()
-//             .statusCode(200)
-//             .body(is("hello"));
+        given()
+          .when().get("/w/boston")
+          .then()
+             .statusCode(200);
     }
 
 }

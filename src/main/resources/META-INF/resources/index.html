@@ -21,7 +21,7 @@
           }
           request.onload = function () {
             var weather = JSON.parse(this.response)
-            document.getElementById('message').textContent = `It's ${weather.main.temp} degrees F in ${weather.name}!`;
+            document.getElementById('message').textContent = `It's ${weather.main.temp} degrees in ${weather.name}!`;
           }
         request.send();
         return false;
